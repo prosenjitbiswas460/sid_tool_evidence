@@ -1,0 +1,204 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning}
+\usepackage{amsmath,graphicx}
+\begin{document}
+\begingroup
+\tikzset{
+  font=\sffamily\footnotesize,
+  >=Latex,
+  card/.style={
+    draw=black!30, fill=white, rounded corners=2.2pt,
+    align=center, inner sep=3pt, font=\sffamily\scriptsize
+  },
+  cardhi/.style={card, draw=teal!85!black, line width=1.2pt},
+  lab/.style={font=\sffamily\scriptsize\bfseries, text=teal!85!black},
+  mute/.style={font=\sffamily\tiny, text=black!55},
+  ink/.style={font=\sffamily\scriptsize\bfseries, text=black!90},
+  thickarr/.style={-{Latex[length=4mm,width=3.2mm]}, teal!85!black, line width=2.8pt},
+  forkarr/.style={-{Latex[length=2.8mm,width=2.1mm]}, black!62, line width=1.45pt},
+}
+\begin{tikzpicture}[x=1cm, y=1cm]
+\newcommand{\ic}[2]{\includegraphics[height=#2]{icons8/clean/#1.png}}
+
+\def\pw{7.7}
+\def\ph{4.85}
+\def\Ax{0.0}
+\def\Ay{0.78}
+\def\Bx{8.5}
+\def\By{0.78}
+
+% Title centered on full width 16.2
+\node[font=\sffamily\bfseries\small, text=teal!85!black, align=center]
+  at (8.1, 7.95) {TWO DEPLOYMENT ROLES};
+\node[font=\sffamily\scriptsize, text=black!50, align=center]
+  at (8.1, 7.60) {Same non-generative SID scorer $\cdot$ different jobs};
+
+% SID pill — geometric center; leave ~0.9cm gap above panels for arrows
+\node[
+  draw=teal!85!black, fill=teal!12, rounded corners=13pt,
+  minimum width=7.8cm, minimum height=1.0cm, anchor=center, line width=1.3pt
+] (sid) at (8.1, 6.95) {};
+\begin{scope}[shift={(6.05,7.03)}]
+  \node[fill=teal!30, draw=teal!85!black, rounded corners=1pt, inner sep=1.6pt,
+        font=\sffamily\tiny\bfseries] {c$_1$};
+  \node[fill=teal!60, draw=teal!85!black, rounded corners=1pt, inner sep=1.6pt,
+        font=\sffamily\tiny\bfseries, text=white] at (0.42,0) {c$_2$};
+  \node[fill=teal!85!black, draw=teal!85!black, rounded corners=1pt, inner sep=1.6pt,
+        font=\sffamily\tiny\bfseries, text=white] at (0.84,0) {c$_3$};
+\end{scope}
+\node[ink, font=\sffamily\small\bfseries, align=center] at (8.1,7.07) {SID scorer};
+\node[mute, align=center] at (8.1,6.81)
+  {Non-generative $\cdot$ emits $S_{\mathrm{tool}}$ over candidates};
+\node[lab, font=\sffamily\tiny\bfseries] at (11.15,7.03) {SHARED};
+
+% Thick dual arrows with real vertical drop into each panel
+\draw[thickarr] (7.05,6.42) -- (3.85,5.72);
+\draw[thickarr] (9.15,6.42) -- (12.35,5.72);
+\node[font=\sffamily\tiny\bfseries, text=teal!80!black] at (4.55,6.15) {into Role A};
+\node[font=\sffamily\tiny\bfseries, text=teal!80!black] at (11.65,6.15) {into Role B};
+
+% ===================== ROLE A: Y-fork =====================
+\begin{scope}
+  \draw[black!22, fill=black!2.5, rounded corners=3.5pt, line width=0.85pt]
+    (\Ax,\Ay) rectangle (\Ax+\pw,\Ay+\ph);
+  \clip[rounded corners=3.5pt]
+    (\Ax+0.05,\Ay+0.05) rectangle (\Ax+\pw-0.05,\Ay+\ph-0.05);
+
+  \node[lab, anchor=west] at (0.28,5.35) {ROLE A};
+  \node[ink, anchor=west] at (1.15,5.35) {CLOSED-SET EVIDENCE ADMISSION};
+  \node[mute, anchor=west] at (0.28,5.10)
+    {Same fixed candidates $\rightarrow$ paired fork: admit $S_{\mathrm{tool}}$ or not};
+
+  % Trunk
+  \node[card, minimum width=3.0cm, minimum height=0.68cm] (Afix) at (3.85,4.72) {};
+  \node at (2.75,4.72) {\ic{list}{0.30cm}};
+  \node[ink, anchor=west] at (3.0,4.84) {Fixed list};
+  \node[mute, anchor=west] at (3.0,4.62) {$|C_t|{=}20$ in context};
+
+  % Y junction
+  \coordinate (J) at (3.85,4.25);
+  \fill[teal!85!black] (J) circle (0.07);
+  \draw[forkarr] (Afix.south) -- (J);
+
+  % Arms
+  \node[card, minimum width=3.2cm, minimum height=1.28cm] (AHM) at (1.85,3.30) {};
+  \node[ink] at (1.85,3.78) {HM};
+  \node at (1.35,3.30) {\ic{history}{0.36cm}};
+  \node at (2.35,3.30) {\ic{metadata}{0.36cm}};
+  \node[font=\sffamily\tiny\bfseries, text=blue!70!black] at (1.35,2.98) {H};
+  \node[font=\sffamily\tiny\bfseries, text=orange!75!black] at (2.35,2.98) {M};
+  \node[mute] at (1.85,2.75) {control · text only};
+
+  \node[cardhi, minimum width=3.4cm, minimum height=1.28cm] (AHMT) at (5.85,3.30) {};
+  \fill[teal!85!black] (AHMT.south west) rectangle ($(AHMT.north west)+(0.08,0)$);
+  \node[ink] at (5.85,3.78) {HMT};
+  \node at (5.05,3.35) {\ic{history}{0.30cm}};
+  \node at (5.70,3.35) {\ic{metadata}{0.30cm}};
+  \node at (6.45,3.35) {\ic{scores}{0.34cm}};
+  \node[font=\sffamily\tiny\bfseries, text=teal!85!black] at (6.45,3.05) {$S_{\mathrm{tool}}$};
+  \node[mute] at (5.85,2.75) {treatment · + SID};
+
+  \draw[forkarr] (J) -- (AHM.north);
+  \draw[forkarr] (J) -- (AHMT.north);
+
+  % Knobs attached under treatment only
+  \node[draw=teal!60!black, fill=teal!7, rounded corners=2pt, line width=0.8pt,
+        minimum width=3.4cm, minimum height=0.58cm] (Aadm) at (5.85,2.25) {};
+  \node at (5.05,2.32) {\ic{scores}{0.22cm}};
+  \node at (5.85,2.32) {\ic{merge}{0.22cm}};
+  \node at (6.65,2.32) {\ic{fallback}{0.22cm}};
+  \node[font=\sffamily\tiny, text=black!65] at (5.05,2.10) {show};
+  \node[font=\sffamily\tiny, text=black!65] at (5.85,2.10) {merge};
+  \node[font=\sffamily\tiny, text=black!65] at (6.65,2.10) {drop};
+  \node[font=\sffamily\tiny\bfseries, text=teal!80!black] at (5.85,2.50) {on HMT only};
+
+  % Converge
+  \coordinate (M) at (3.85,1.70);
+  \draw[forkarr] (AHM.south) -- ++(0,-0.22) -| (M);
+  \draw[forkarr] (Aadm.south) -- ++(0,-0.12) -| (M);
+  \node[card, minimum width=2.4cm, minimum height=0.58cm] (Allm) at (M) {};
+  \node at (3.15,1.70) {\ic{snowflake}{0.28cm}};
+  \node[ink, anchor=west] at (3.4,1.70) {frozen LLM};
+
+  \node[draw=red!70!black, fill=red!7, rounded corners=2.2pt, line width=1.0pt,
+        minimum width=2.6cm, minimum height=0.55cm] (Aout) at (2.0,1.05) {};
+  \node[font=\sffamily\scriptsize\bfseries, text=red!70!black] at (Aout.center) {usually hurts / null};
+  \node[card, minimum width=3.7cm, minimum height=0.55cm] (Adelta) at (5.4,1.05) {};
+  \node[font=\sffamily\tiny] at (Adelta.center)
+    {$\Delta{=}\mathrm{NDCG@5}(\mathrm{HMT}){-}\mathrm{NDCG@5}(\mathrm{HM})$};
+\end{scope}
+
+% ===================== ROLE B =====================
+\begin{scope}
+  \draw[black!22, fill=black!2.5, rounded corners=3.5pt, line width=0.85pt]
+    (\Bx,\By) rectangle (\Bx+\pw,\By+\ph);
+  \clip[rounded corners=3.5pt]
+    (\Bx+0.05,\By+0.05) rectangle (\Bx+\pw-0.05,\By+\ph-0.05);
+
+  \node[lab, anchor=west] at (8.78,5.35) {ROLE B};
+  \node[ink, anchor=west] at (9.65,5.35) {POOL $\rightarrow$ SHORTLIST $\rightarrow$ RANK};
+  \node[mute, anchor=west] at (8.78,5.10)
+    {Choose what enters context $\rightarrow$ then rank with text only};
+
+  \node[card, minimum width=2.35cm, minimum height=2.15cm, anchor=south west]
+    (Buni) at (8.75,2.05) {};
+  \node[ink] at (9.925,3.95) {Universe};
+  \foreach \x/\y/\s in {
+    9.2/3.3/1, 9.5/3.0/0.9, 9.8/3.4/1.1, 10.1/2.9/0.8, 10.4/3.3/1,
+    9.35/2.75/0.85, 9.7/2.65/0.9, 10.2/2.7/1, 10.55/2.95/0.75,
+    9.15/2.95/0.7, 9.9/3.15/1.05, 10.35/2.55/0.85, 9.55/3.35/0.8
+  } { \fill[blue!40!black, opacity=0.58] (\x,\y) circle (0.045*\s); }
+  \fill[teal!85!black] (10.05,3.05) circle (0.085);
+  \draw[teal!85!black, line width=1.1pt] (10.05,3.05) circle (0.15);
+  \node[font=\sffamily\tiny\bfseries, text=teal!85!black] at (10.4,3.25) {GT};
+  \node[mute] at (9.925,2.28) {$M_{\mathrm{pool}}\gg 20$};
+
+  \node[cardhi, minimum width=2.35cm, minimum height=2.15cm, anchor=south west]
+    (Bfilt) at (11.3,2.05) {};
+  \fill[teal!85!black] (Bfilt.south west) rectangle ($(Bfilt.north west)+(0.08,0)$);
+  \node at (12.475,3.9) {\ic{filter}{0.34cm}};
+  \node[ink] at (12.475,3.6) {SID filter};
+  \foreach \i in {0,1,2,3} {
+    \fill[teal!80!black] ({11.75+0.35*\i},3.0) circle (0.09);
+  }
+  \node[mute] at (12.475,2.55) {top-$L{=}20$};
+  \node[mute] at (12.475,2.35) {$S_{\mathrm{tool}}$ shortlist};
+
+  \node[card, minimum width=2.2cm, minimum height=2.15cm, anchor=south west]
+    (Bllm) at (13.85,2.05) {};
+  \node at (14.95,3.9) {\ic{snowflake}{0.36cm}};
+  \node[ink] at (14.95,3.55) {frozen LLM};
+  \node[mute] at (14.95,2.95) {HM rank};
+  \node[mute] at (14.95,2.72) {text only};
+  \node at (14.7,2.4) {\ic{history}{0.24cm}};
+  \node at (15.15,2.4) {\ic{metadata}{0.24cm}};
+
+  \draw[forkarr] (Buni.east) -- (Bfilt.west);
+  \draw[forkarr] (Bfilt.east) -- (Bllm.west);
+
+  \node[draw=teal!85!black, fill=teal!10, rounded corners=2.2pt, line width=1.1pt,
+        minimum width=7.2cm, minimum height=1.05cm, anchor=south west]
+    (Bfind) at (8.75,0.90) {};
+  \node at (9.25,1.42) {\ic{target}{0.38cm}};
+  \node[ink, anchor=west, font=\sffamily\scriptsize\bfseries] at (9.65,1.58)
+    {SID beats random coverage ($\approx{+}0.06$ Recall@20)};
+  \node[mute, anchor=west] at (9.65,1.28)
+    {Filter-then-text $\cdot$ do not force-merge $S_{\mathrm{tool}}$ after shortlisting};
+\end{scope}
+
+% Footer
+\node[
+  draw=teal!75!black, fill=teal!14, rounded corners=3pt, line width=1.0pt,
+  minimum width=16.2cm, minimum height=0.68cm, anchor=south west
+] (foot) at (0,0.06) {};
+\node[font=\sffamily\scriptsize\bfseries, text=teal!85!black, anchor=west]
+  at (0.35,0.4)
+  {Role A --- Do SID scores help after candidates are already visible?};
+\node[font=\sffamily\scriptsize\bfseries, text=teal!85!black, anchor=west]
+  at (8.4,0.4)
+  {Role B --- Does the same scorer help choose what enters context?};
+
+\end{tikzpicture}
+\endgroup
+\end{document}

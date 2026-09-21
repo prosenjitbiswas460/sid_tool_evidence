@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+outputs/
+manifests/*.json
+websocietysimulator/processed_data/
+websocietysimulator/artifacts/**/*.pt
+*.egg-info/
+.mplconfig/

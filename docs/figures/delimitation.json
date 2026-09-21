@@ -1,0 +1,65 @@
+[
+  {
+    "group": "Interface",
+    "label": "Full deployed HMT",
+    "delta": -0.055,
+    "ci_lo": -0.096,
+    "ci_hi": -0.014,
+    "verdict": "hurts",
+    "n": 376
+  },
+  {
+    "group": "Interface",
+    "label": "Prompt-only HMT",
+    "delta": -0.033,
+    "ci_lo": -0.077,
+    "ci_hi": 0.009,
+    "verdict": "ns",
+    "n": 376
+  },
+  {
+    "group": "History ablation",
+    "label": "Titles only: Amazon",
+    "delta": -0.083,
+    "ci_lo": -0.115,
+    "ci_hi": -0.051,
+    "verdict": "hurts",
+    "n": 795
+  },
+  {
+    "group": "History ablation",
+    "label": "Titles only: Goodreads",
+    "delta": -0.104,
+    "ci_lo": -0.132,
+    "ci_hi": -0.077,
+    "verdict": "hurts",
+    "n": 955
+  },
+  {
+    "group": "History ablation",
+    "label": "Titles only: Yelp",
+    "delta": -0.042,
+    "ci_lo": -0.071,
+    "ci_hi": -0.013,
+    "verdict": "hurts",
+    "n": 859
+  },
+  {
+    "group": "Codebook quality",
+    "label": "Yelp high-collision",
+    "delta": -0.074,
+    "ci_lo": -0.102,
+    "ci_hi": -0.045,
+    "verdict": "hurts",
+    "n": 859
+  },
+  {
+    "group": "Codebook quality",
+    "label": "Yelp repaired SID-v2",
+    "delta": -0.046,
+    "ci_lo": -0.074,
+    "ci_hi": -0.017,
+    "verdict": "hurts",
+    "n": 859
+  }
+]

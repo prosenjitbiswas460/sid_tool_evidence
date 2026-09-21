@@ -1,0 +1,39 @@
+{
+  "item_json": "websocietysimulator/processed_data/item.json",
+  "review_json": "websocietysimulator/processed_data/review.json",
+  "output_dir": "websocietysimulator/artifacts/yelp_sid_v2",
+  "source": "yelp",
+  "embedding_model": "google/flan-t5-base",
+  "codebook_sizes": [
+    256,
+    256,
+    256
+  ],
+  "hidden_dim": 512,
+  "latent_dim": 256,
+  "epochs": 20,
+  "batch_size": 256,
+  "learning_rate": 0.0001,
+  "cooccurrence_weight": 0.1,
+  "embed_batch_size": 8,
+  "max_length": 128,
+  "max_items": null,
+  "max_users": null,
+  "device": "cuda",
+  "seed": 42,
+  "sid_version": "sid_v2",
+  "sid_mode": "sid_v2",
+  "num_items": 32869,
+  "embedding_dim": 768,
+  "num_hierarchies": 3,
+  "num_unique_sid_prefixes": 1782,
+  "num_collisions": 31087,
+  "files": {
+    "item_id_to_sid": "item_id_to_sid.pt",
+    "sid_map": "sid_map.pt",
+    "rq_vae": "rq_vae.pt",
+    "embeddings": "merged_predictions_tensor.pt",
+    "ordered_item_ids": "ordered_item_ids.pt",
+    "sid_to_item_ids": "sid_to_item_ids.json"
+  }
+}

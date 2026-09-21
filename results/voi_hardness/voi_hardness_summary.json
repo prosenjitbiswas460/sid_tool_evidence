@@ -1,0 +1,289 @@
+{
+  "scope": "backbone_dataset",
+  "signals": [
+    "log_history_chars",
+    "log_review_count",
+    "metadata_richness",
+    "sid_top1_margin",
+    "sid_score_std",
+    "candidate_sid_diversity"
+  ],
+  "per_scope": {
+    "1.5b/amazon": {
+      "n": 795,
+      "mean_voi": -0.05147018562876914,
+      "pct_help": 0.24654088050314465,
+      "pct_hurt": 0.30062893081761005,
+      "best_fixed_gain": 0.0,
+      "oracle_headroom": 0.09907258933155501,
+      "signal_ceiling_theoretical": 0.03315160285761443,
+      "realized_gain_over_bf": 0.0206562535851709,
+      "information_gap": 0.07841633574638411,
+      "recoverable_fraction": 0.20849615140311875,
+      "admit_rate": 0.3421383647798742
+    },
+    "1.5b/goodreads": {
+      "n": 955,
+      "mean_voi": -0.0894682752659141,
+      "pct_help": 0.22722513089005236,
+      "pct_hurt": 0.32774869109947646,
+      "best_fixed_gain": 0.0,
+      "oracle_headroom": 0.08577896353351798,
+      "signal_ceiling_theoretical": 0.026176557059774105,
+      "realized_gain_over_bf": 0.029804421466141016,
+      "information_gap": 0.05597454206737697,
+      "recoverable_fraction": 0.34745606892877634,
+      "admit_rate": 0.30052356020942406
+    },
+    "1.5b/yelp": {
+      "n": 859,
+      "mean_voi": -0.029077314152392484,
+      "pct_help": 0.16647264260768335,
+      "pct_hurt": 0.20372526193247964,
+      "best_fixed_gain": 0.0,
+      "oracle_headroom": 0.07176388563493259,
+      "signal_ceiling_theoretical": 0.0328626906253651,
+      "realized_gain_over_bf": 0.026234022087244423,
+      "information_gap": 0.04552986354768817,
+      "recoverable_fraction": 0.36556022371333885,
+      "admit_rate": 0.40162980209545984
+    },
+    "3b/amazon": {
+      "n": 795,
+      "mean_voi": -0.02746070606610807,
+      "pct_help": 0.1610062893081761,
+      "pct_hurt": 0.22641509433962265,
+      "best_fixed_gain": 0.0,
+      "oracle_headroom": 0.07669388255876744,
+      "signal_ceiling_theoretical": 0.038127557697991345,
+      "realized_gain_over_bf": 0.022542262927329883,
+      "information_gap": 0.05415161963143755,
+      "recoverable_fraction": 0.29392517597549783,
+      "admit_rate": 0.4138364779874214
+    },
+    "3b/goodreads": {
+      "n": 955,
+      "mean_voi": -0.020722858006616482,
+      "pct_help": 0.225130890052356,
+      "pct_hurt": 0.2764397905759162,
+      "best_fixed_gain": 0.0,
+      "oracle_headroom": 0.09123687880268852,
+      "signal_ceiling_theoretical": 0.03988246101675067,
+      "realized_gain_over_bf": 0.03578751309426105,
+      "information_gap": 0.05544936570842747,
+      "recoverable_fraction": 0.39224832725433484,
+      "admit_rate": 0.41047120418848165
+    },
+    "3b/yelp": {
+      "n": 859,
+      "mean_voi": 0.014734297834119576,
+      "pct_help": 0.20256111757857975,
+      "pct_hurt": 0.16996507566938301,
+      "best_fixed_gain": 0.014734297834119576,
+      "oracle_headroom": 0.08021587685689426,
+      "signal_ceiling_theoretical": 0.04823404756939695,
+      "realized_gain_over_bf": 0.03956946425851783,
+      "information_gap": 0.040646412598376425,
+      "recoverable_fraction": 0.4932871871376543,
+      "admit_rate": 0.5378346915017462
+    },
+    "7b/amazon": {
+      "n": 795,
+      "mean_voi": -0.049071083883097576,
+      "pct_help": 0.25157232704402516,
+      "pct_hurt": 0.36855345911949683,
+      "best_fixed_gain": 0.0,
+      "oracle_headroom": 0.11693269864481726,
+      "signal_ceiling_theoretical": 0.048483815463411274,
+      "realized_gain_over_bf": 0.028271207681051493,
+      "information_gap": 0.08866149096376577,
+      "recoverable_fraction": 0.24177332780906055,
+      "admit_rate": 0.35094339622641507
+    },
+    "7b/goodreads": {
+      "n": 955,
+      "mean_voi": -0.07473847110270716,
+      "pct_help": 0.2418848167539267,
+      "pct_hurt": 0.41047120418848165,
+      "best_fixed_gain": 0.0,
+      "oracle_headroom": 0.09772910175185087,
+      "signal_ceiling_theoretical": 0.036034795226367704,
+      "realized_gain_over_bf": 0.04814405771006706,
+      "information_gap": 0.049585044041783814,
+      "recoverable_fraction": 0.49262764976917706,
+      "admit_rate": 0.33298429319371725
+    },
+    "7b/yelp": {
+      "n": 859,
+      "mean_voi": -0.04574216707403328,
+      "pct_help": 0.25378346915017463,
+      "pct_hurt": 0.33643771827706637,
+      "best_fixed_gain": 0.0,
+      "oracle_headroom": 0.12059124881288563,
+      "signal_ceiling_theoretical": 0.047883145750151755,
+      "realized_gain_over_bf": 0.06033294190760231,
+      "information_gap": 0.060258306905283325,
+      "recoverable_fraction": 0.5003094544714218,
+      "admit_rate": 0.35273573923166474
+    }
+  },
+  "aggregate": {
+    "n": 7827,
+    "oracle_headroom": 0.093166699998758,
+    "realized_gain_over_bf": 0.034979876737167785,
+    "signal_ceiling_theoretical": 0.03877665490584667,
+    "information_gap": 0.05818682326159021,
+    "recoverable_fraction": 0.3754547143736346,
+    "mean_voi": -0.04215951390019587
+  },
+  "shift": {
+    "covariate_shift_auc": 0.9572724934841418,
+    "per_scope": {
+      "7b/amazon": {
+        "oracle_headroom": 0.11693269864481726,
+        "realized_gain_over_bf": -0.02978589759663398,
+        "recoverable_fraction": -0.2547268466548314,
+        "selected_model": "hgb"
+      },
+      "7b/goodreads": {
+        "oracle_headroom": 0.09772910175185087,
+        "realized_gain_over_bf": -0.004504810921053815,
+        "recoverable_fraction": -0.04609487696400013,
+        "selected_model": "ridge"
+      },
+      "7b/yelp": {
+        "oracle_headroom": 0.12059124881288563,
+        "realized_gain_over_bf": -0.0021758683603801763,
+        "recoverable_fraction": -0.018043335497390393,
+        "selected_model": "ridge"
+      }
+    },
+    "shift_realized_gain_over_bf": -0.011441530831926785,
+    "shift_oracle_headroom": 0.11110796102948105,
+    "shift_recoverable_fraction": -0.1029766969523536,
+    "matched_scopes": [
+      "7b/amazon",
+      "7b/goodreads",
+      "7b/yelp"
+    ]
+  },
+  "eaa_verification": {
+    "recovered_headroom": -0.218,
+    "note": "Recovered headroom of the deployed calibrated admit/skip policy. Regenerated when analyze_voi_hardness.py is run with --eaa_predictions_dir and adaptive EAA prediction files."
+  },
+  "stronger_routers": {
+    "models": [
+      "ridge",
+      "hgb",
+      "mlp"
+    ],
+    "in_distribution": {
+      "ridge": {
+        "n": 7827,
+        "best_fixed_gain": 0.0016170642442198437,
+        "oracle_headroom": 0.093166699998758,
+        "realized_gain_over_bf": -0.0010553640084129652,
+        "admit_rate": 0.18027341254631404,
+        "recoverable_fraction": -0.011327695500935788
+      },
+      "hgb": {
+        "n": 7827,
+        "best_fixed_gain": 0.0016170642442198437,
+        "oracle_headroom": 0.093166699998758,
+        "realized_gain_over_bf": 0.034979876737167785,
+        "admit_rate": 0.38162769899067334,
+        "recoverable_fraction": 0.3754547143736346
+      },
+      "mlp": {
+        "n": 7827,
+        "best_fixed_gain": 0.0016170642442198437,
+        "oracle_headroom": 0.093166699998758,
+        "realized_gain_over_bf": 0.0030008117722236274,
+        "admit_rate": 0.3356330650313019,
+        "recoverable_fraction": 0.03220905937704814
+      }
+    },
+    "shift": {
+      "ridge": {
+        "n": 2609,
+        "best_fixed_gain": 0.0,
+        "oracle_headroom": 0.11110796102948105,
+        "realized_gain_over_bf": -0.01731800576398449,
+        "admit_rate": 0.39402069758528174,
+        "recoverable_fraction": -0.15586647080481825
+      },
+      "hgb": {
+        "n": 2609,
+        "best_fixed_gain": 0.0,
+        "oracle_headroom": 0.11110796102948105,
+        "realized_gain_over_bf": -0.03669846681886217,
+        "admit_rate": 0.6213108470678421,
+        "recoverable_fraction": -0.33029556549169964
+      },
+      "mlp": {
+        "n": 2609,
+        "best_fixed_gain": 0.0,
+        "oracle_headroom": 0.11110796102948105,
+        "realized_gain_over_bf": -0.043116922804584304,
+        "admit_rate": 0.8336527405136067,
+        "recoverable_fraction": -0.3880633071211143
+      }
+    },
+    "two_feature_rule": {
+      "protocol": "per_scope_thresholds_tuned_on_calibration_only",
+      "features": [
+        "sid_top1_margin",
+        "sid_score_std"
+      ],
+      "calibration": {
+        "n": 2646,
+        "best_fixed_gain": 0.12077950911089495,
+        "oracle_headroom": 0.018745962125756185,
+        "realized_gain_over_bf": -0.008271002061713753,
+        "admit_rate": 0.8994708994708994,
+        "recoverable_fraction": -0.4412151270886083
+      },
+      "benchmark": {
+        "n": 2609,
+        "best_fixed_gain": 0.0,
+        "oracle_headroom": 0.11110796102948105,
+        "realized_gain_over_bf": -0.0034112547112974214,
+        "admit_rate": 0.04752778842468379,
+        "recoverable_fraction": -0.030702162830549013
+      },
+      "per_scope": [
+        {
+          "scope": "7b/amazon",
+          "form": "margin_ge",
+          "t_sid_top1_margin": 0.17493022580941517,
+          "t_sid_score_std": 0.08018967424614197,
+          "cal_frac": -0.3759353403082636,
+          "bench_frac": -0.0957381709632916,
+          "bench_admit": 0.1559748427672956
+        },
+        {
+          "scope": "7b/goodreads",
+          "form": "std_ge",
+          "t_sid_top1_margin": 0.4883481780687967,
+          "t_sid_score_std": 0.17080117300245312,
+          "cal_frac": -1.2006044538748173,
+          "bench_frac": 0.0,
+          "bench_admit": 0.0
+        },
+        {
+          "scope": "7b/yelp",
+          "form": "std_ge",
+          "t_sid_top1_margin": 0.4722330156962076,
+          "t_sid_score_std": 0.16206201850718885,
+          "cal_frac": -0.1338848403540779,
+          "bench_frac": 0.0,
+          "bench_admit": 0.0
+        }
+      ],
+      "form": "margin_ge",
+      "t_sid_top1_margin": 0.17493022580941517,
+      "t_sid_score_std": 0.08018967424614197
+    },
+    "note": "Per-model and two-feature-rule ablations. Aggregate and shift keys elsewhere in this JSON are unchanged. Two-feature thresholds are tuned on calibration only (collision_rate, sid_score_std)."
+  }
+}
